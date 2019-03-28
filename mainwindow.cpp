@@ -6,6 +6,7 @@
 using namespace std;
 
 
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -14,6 +15,8 @@ MainWindow::MainWindow(QWidget *parent) :
     this->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     QWidget *window = new QWidget;
     setCentralWidget(window);
+    window -> setMinimumSize (300,400); // Minimale Fenstergröße einstellen
+
 
 
     //Taste "1"
@@ -118,6 +121,32 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //AnzeigeFenster
     QLabel*anzeige=new QLabel;
+    QFont f( "Arial", 12, QFont::Bold); // Schriftgröße
+    QFont t( "Arial", 10, QFont::Bold); // Schriftgröße
+    anzeige->setFont( f);
+    Taste0 -> setFont (t);
+    Taste1 -> setFont (t);
+    Taste2 -> setFont (t);
+    Taste3 -> setFont (t);
+    Taste4 -> setFont (t);
+    Taste5 -> setFont (t);
+    Taste6 -> setFont (t);
+    Taste7 -> setFont (t);
+    Taste8 -> setFont (t);
+    Taste9 -> setFont (t);
+    Taste_CE -> setFont (t);
+    Taste_Ans -> setFont (t);
+    Taste_mal -> setFont (t);
+    Taste_Sqrt -> setFont (t);
+    Taste_plus -> setFont (t);
+    Taste_komma -> setFont (t);
+    Taste_minus -> setFont (t);
+    Taste_gleich -> setFont (t);
+    Taste_Quadrat -> setFont (t);
+    Taste_geteilt -> setFont (t);
+
+
+
 
 
     QVBoxLayout *vbox = new QVBoxLayout;
@@ -157,7 +186,6 @@ MainWindow::MainWindow(QWidget *parent) :
     grid -> addWidget(Taste_minus,2,3);
     grid -> addWidget(Taste_mal,3,3);
     grid -> addWidget(Taste_geteilt,4,3);
-
 
 
 
