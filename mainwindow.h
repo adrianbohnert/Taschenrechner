@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QtWidgets>
+#include <QBoxLayout>
+#include <iostream>
 
 namespace Ui {
 class MainWindow;
@@ -17,6 +20,12 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    QString ausgabestring;
+    QLabel *ausgabefeld;
+private slots:
+    void anzeige(void);
+
+
 };
 
 #endif // MAINWINDOW_H

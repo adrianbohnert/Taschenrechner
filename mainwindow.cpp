@@ -6,7 +6,6 @@
 using namespace std;
 
 
-
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -18,11 +17,10 @@ MainWindow::MainWindow(QWidget *parent) :
     window -> setMinimumSize (300,400); // Minimale Fenstergröße einstellen
 
 
-
     //Taste "1"
     QPushButton *Taste1 = new QPushButton("1",this);
     Taste1->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
-    connect(Taste1, SIGNAL(clicked()), qApp, SLOT(quit()));
+    connect(Taste1, SIGNAL(clicked()),this, SLOT(anzeige()));
 
     //Taste "2"
     QPushButton *Taste2 = new QPushButton("2",this);
@@ -120,10 +118,10 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(Taste_Sqrt, SIGNAL(clicked()), qApp, SLOT(quit()));
 
     //AnzeigeFenster
-    QLabel*anzeige=new QLabel;
+    QLabel *ausgabefeld=new QLabel;
     QFont f( "Arial", 12, QFont::Bold); // Schriftgröße
     QFont t( "Arial", 10, QFont::Bold); // Schriftgröße
-    anzeige->setFont( f);
+    ausgabefeld->setFont( f);
     Taste0 -> setFont (t);
     Taste1 -> setFont (t);
     Taste2 -> setFont (t);
@@ -154,8 +152,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //Anzeige
 
-    vbox->addWidget(anzeige);
-    anzeige->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Fixed);
+    vbox->addWidget(ausgabefeld);
+    ausgabefeld->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Fixed);
 
     // erste Zeile hinter ausgabe
     grid->addWidget(Taste_Sqrt,0,0);
@@ -191,12 +189,14 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     vbox->addLayout(grid);
-    anzeige->setText("Ausgabehhhhhhhhh");                        //ist nur zum Testen ob die Ausgabe an der richtigen Stelle
+
 
     window->setLayout(vbox);
 
 }
-
+void MainWindow::anzeige(void){
+    ausgabefeld->setText("ausgabestring");
+}
 MainWindow::~MainWindow()
 {
 
