@@ -18,112 +18,120 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     //Taste "1"
-    QPushButton *Taste1 = new QPushButton("1",this);
+    Taste1 = new QPushButton("1");
     Taste1->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     connect(Taste1, SIGNAL(clicked()),this, SLOT(anzeige()));
 
     //Taste "2"
-    QPushButton *Taste2 = new QPushButton("2",this);
+    Taste2 = new QPushButton("2");
     Taste2->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     connect(Taste2, SIGNAL(clicked()), qApp, SLOT(quit()));
 
     //Taste "3"
-    QPushButton *Taste3 = new QPushButton("3",this);
+    Taste3 = new QPushButton("3");
     Taste3->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     connect(Taste3, SIGNAL(clicked()), qApp, SLOT(quit()));
 
     //Taste "4"
-    QPushButton *Taste4 = new QPushButton("4",this);
+    Taste4 = new QPushButton("4");
     Taste4->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     connect(Taste4, SIGNAL(clicked()), qApp, SLOT(quit()));
 
     //Taste "5"
-    QPushButton *Taste5 = new QPushButton("5",this);
+    Taste5 = new QPushButton("5");
     Taste5->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     connect(Taste5, SIGNAL(clicked()), qApp, SLOT(quit()));
 
     //Taste "6"
-    QPushButton *Taste6 = new QPushButton("6",this);
+    Taste6 = new QPushButton("6");
     Taste6->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     connect(Taste6, SIGNAL(clicked()), qApp, SLOT(quit()));
 
     //Taste "7"
-    QPushButton *Taste7 = new QPushButton("7",this);
+    Taste7 = new QPushButton("7");
     Taste7->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     connect(Taste7, SIGNAL(clicked()), qApp, SLOT(quit()));
 
     //Taste "8"
-    QPushButton *Taste8 = new QPushButton("8",this);
+    Taste8 = new QPushButton("8");
     Taste8->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     connect(Taste8, SIGNAL(clicked()), qApp, SLOT(quit()));
 
     //Taste "9"
-    QPushButton *Taste9 = new QPushButton("9",this);
+    Taste9 = new QPushButton("9");
     Taste9->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     connect(Taste9, SIGNAL(clicked()), qApp, SLOT(quit()));
 
     //Taste "0"
-    QPushButton *Taste0 = new QPushButton("0",this);
+    Taste0 = new QPushButton("0");
     Taste0->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     connect(Taste0, SIGNAL(clicked()), qApp, SLOT(quit()));
 
     //Taste ","
-    QPushButton *Taste_komma = new QPushButton(",",this);
+    Taste_komma = new QPushButton(",");
     Taste_komma->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     connect(Taste_komma, SIGNAL(clicked()), qApp, SLOT(quit()));
 
     //Taste "="
-    QPushButton *Taste_gleich = new QPushButton("=",this);
+    Taste_gleich = new QPushButton("=");
     Taste_gleich->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
-    connect(Taste1, SIGNAL(clicked()), qApp, SLOT(quit()));
+    connect(Taste_gleich, SIGNAL(clicked()), qApp, SLOT(quit()));
 
     //Taste "+"
-    QPushButton *Taste_plus = new QPushButton("+",this);
+    Taste_plus = new QPushButton("+");
     Taste_plus->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     connect(Taste_plus, SIGNAL(clicked()), qApp, SLOT(quit()));
 
     //Taste "-"
-    QPushButton *Taste_minus = new QPushButton("-",this);
+    Taste_minus = new QPushButton("-");
     Taste_minus->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     connect(Taste_minus, SIGNAL(clicked()), qApp, SLOT(quit()));
 
     //Taste "*"
-    QPushButton *Taste_mal = new QPushButton("*",this);
+    Taste_mal = new QPushButton("*");
     Taste_mal->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     connect(Taste_mal, SIGNAL(clicked()), qApp, SLOT(quit()));
 
     //Taste "/"
-    QPushButton *Taste_geteilt = new QPushButton("/",this);
+    Taste_geteilt = new QPushButton("/");
     Taste_geteilt->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     connect(Taste_geteilt, SIGNAL(clicked()), qApp, SLOT(quit()));
 
     //Taste "Ans"
-    QPushButton *Taste_Ans = new QPushButton("Ans",this);
+    Taste_Ans = new QPushButton("Ans");
     Taste_Ans->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     connect(Taste_Ans, SIGNAL(clicked()), qApp, SLOT(quit()));
 
     //Taste "CE"
-    QPushButton *Taste_CE = new QPushButton("CE",this);
+    Taste_CE = new QPushButton("CE");
     Taste_CE->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     connect(Taste_CE, SIGNAL(clicked()), qApp, SLOT(quit()));
 
     //Taste "^2"
-    QPushButton *Taste_Quadrat = new QPushButton("^2",this);
+    Taste_Quadrat = new QPushButton("^2");
     Taste_Quadrat->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     connect(Taste_Quadrat, SIGNAL(clicked()), qApp, SLOT(quit()));
 
     //Taste "sqrt"
-    QPushButton *Taste_Sqrt = new QPushButton("Sqrt",this);
+    Taste_Sqrt = new QPushButton("Sqrt");
     Taste_Sqrt->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     connect(Taste_Sqrt, SIGNAL(clicked()), qApp, SLOT(quit()));
 
+
+
     //AnzeigeFenster
-    QLabel *ausgabefeld=new QLabel;
-    QFont f( "Arial", 12, QFont::Bold); // Schriftgröße
-    QFont t( "Arial", 10, QFont::Bold); // Schriftgröße
+
+    ausgabefeld=new QLabel;
+
+    f=QFont( "Arial", 12, QFont::Bold); // Schriftgröße
+    t=QFont( "Arial", 10, QFont::Bold); // Schriftgröße
+
     ausgabefeld->setFont( f);
+
     Taste0 -> setFont (t);
+
     Taste1 -> setFont (t);
+
     Taste2 -> setFont (t);
     Taste3 -> setFont (t);
     Taste4 -> setFont (t);
@@ -144,16 +152,15 @@ MainWindow::MainWindow(QWidget *parent) :
     Taste_geteilt -> setFont (t);
 
 
-
-
-
-    QVBoxLayout *vbox = new QVBoxLayout;
-    QGridLayout *grid = new QGridLayout;
+    vbox = new QVBoxLayout;
+    grid = new QGridLayout;
 
     //Anzeige
 
     vbox->addWidget(ausgabefeld);
     ausgabefeld->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Fixed);
+    ausgabefeld->setText("testi");
+
 
     // erste Zeile hinter ausgabe
     grid->addWidget(Taste_Sqrt,0,0);
@@ -186,10 +193,7 @@ MainWindow::MainWindow(QWidget *parent) :
     grid -> addWidget(Taste_geteilt,4,3);
 
 
-
-
     vbox->addLayout(grid);
-
 
     window->setLayout(vbox);
 
