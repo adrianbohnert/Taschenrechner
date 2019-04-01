@@ -51,7 +51,28 @@ public:
     QFont t;
 
 public slots:
-    void anzeige(void);
+    //void anzeige(void);
+    void berechnung(void);
+    void eins(void);
+    void zwei(void);
+    void drei(void);
+    void vier(void);
+    void fünf(void);
+    void sechs(void);
+    void sieben(void);
+    void acht(void);
+    void neun(void);
+    void null(void);
+    void plus(void);
+    void minus(void);
+    void mal(void);
+    void geteilt(void);
+    void quadrat(void);
+    void wurzel(void);
+    void komma(void);
+    void gleich (void);
+    void ans(void);
+    void CE(void);
 
 
 };

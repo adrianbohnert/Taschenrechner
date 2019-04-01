@@ -5,6 +5,11 @@
 #include <iostream>
 using namespace std;
 
+QString rechnung="";
+QString zahl1="";
+QString zahl2 ="";
+QString ergebnis="";
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -20,102 +25,102 @@ MainWindow::MainWindow(QWidget *parent) :
     //Taste "1"
     Taste1 = new QPushButton("1");
     Taste1->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
-    connect(Taste1, SIGNAL(clicked()),this, SLOT(anzeige()));
+    connect(Taste1, SIGNAL(clicked()),this, SLOT(eins()));
 
     //Taste "2"
     Taste2 = new QPushButton("2");
     Taste2->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
-    connect(Taste2, SIGNAL(clicked()), qApp, SLOT(quit()));
+    connect(Taste2, SIGNAL(clicked()), this, SLOT(zwei()));
 
     //Taste "3"
     Taste3 = new QPushButton("3");
     Taste3->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
-    connect(Taste3, SIGNAL(clicked()), qApp, SLOT(quit()));
+    connect(Taste3, SIGNAL(clicked()), this, SLOT(drei()));
 
     //Taste "4"
     Taste4 = new QPushButton("4");
     Taste4->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
-    connect(Taste4, SIGNAL(clicked()), qApp, SLOT(quit()));
+    connect(Taste4, SIGNAL(clicked()), this, SLOT(vier()));
 
     //Taste "5"
     Taste5 = new QPushButton("5");
     Taste5->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
-    connect(Taste5, SIGNAL(clicked()), qApp, SLOT(quit()));
+    connect(Taste5, SIGNAL(clicked()), this, SLOT(fünf()));
 
     //Taste "6"
     Taste6 = new QPushButton("6");
     Taste6->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
-    connect(Taste6, SIGNAL(clicked()), qApp, SLOT(quit()));
+    connect(Taste6, SIGNAL(clicked()), this, SLOT(sechs()));
 
     //Taste "7"
     Taste7 = new QPushButton("7");
     Taste7->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
-    connect(Taste7, SIGNAL(clicked()), qApp, SLOT(quit()));
+    connect(Taste7, SIGNAL(clicked()), this, SLOT(sieben()));
 
     //Taste "8"
     Taste8 = new QPushButton("8");
     Taste8->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
-    connect(Taste8, SIGNAL(clicked()), qApp, SLOT(quit()));
+    connect(Taste8, SIGNAL(clicked()), this, SLOT(acht()));
 
     //Taste "9"
     Taste9 = new QPushButton("9");
     Taste9->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
-    connect(Taste9, SIGNAL(clicked()), qApp, SLOT(quit()));
+    connect(Taste9, SIGNAL(clicked()), this, SLOT(neun()));
 
     //Taste "0"
     Taste0 = new QPushButton("0");
     Taste0->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
-    connect(Taste0, SIGNAL(clicked()), qApp, SLOT(quit()));
+    connect(Taste0, SIGNAL(clicked()), this, SLOT(null()));
 
     //Taste ","
     Taste_komma = new QPushButton(",");
     Taste_komma->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
-    connect(Taste_komma, SIGNAL(clicked()), qApp, SLOT(quit()));
+    connect(Taste_komma, SIGNAL(clicked()), this, SLOT(komma()));
 
     //Taste "="
     Taste_gleich = new QPushButton("=");
     Taste_gleich->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
-    connect(Taste_gleich, SIGNAL(clicked()), qApp, SLOT(quit()));
+    connect(Taste_gleich, SIGNAL(clicked()), this, SLOT(gleich()));
 
     //Taste "+"
     Taste_plus = new QPushButton("+");
     Taste_plus->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
-    connect(Taste_plus, SIGNAL(clicked()), qApp, SLOT(quit()));
+    connect(Taste_plus, SIGNAL(clicked()), this, SLOT(plus()));
 
     //Taste "-"
     Taste_minus = new QPushButton("-");
     Taste_minus->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
-    connect(Taste_minus, SIGNAL(clicked()), qApp, SLOT(quit()));
+    connect(Taste_minus, SIGNAL(clicked()), this, SLOT(minus()));
 
     //Taste "*"
     Taste_mal = new QPushButton("*");
     Taste_mal->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
-    connect(Taste_mal, SIGNAL(clicked()), qApp, SLOT(quit()));
+    connect(Taste_mal, SIGNAL(clicked()), this, SLOT(mal()));
 
     //Taste "/"
     Taste_geteilt = new QPushButton("/");
     Taste_geteilt->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
-    connect(Taste_geteilt, SIGNAL(clicked()), qApp, SLOT(quit()));
+    connect(Taste_geteilt, SIGNAL(clicked()), this, SLOT(geteilt()));
 
     //Taste "Ans"
     Taste_Ans = new QPushButton("Ans");
     Taste_Ans->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
-    connect(Taste_Ans, SIGNAL(clicked()), qApp, SLOT(quit()));
+    connect(Taste_Ans, SIGNAL(clicked()), this, SLOT(ans()));
 
     //Taste "CE"
     Taste_CE = new QPushButton("CE");
     Taste_CE->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
-    connect(Taste_CE, SIGNAL(clicked()), qApp, SLOT(quit()));
+    connect(Taste_CE, SIGNAL(clicked()), this, SLOT(CE()));
 
     //Taste "^2"
     Taste_Quadrat = new QPushButton("^2");
     Taste_Quadrat->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
-    connect(Taste_Quadrat, SIGNAL(clicked()), qApp, SLOT(quit()));
+    connect(Taste_Quadrat, SIGNAL(clicked()), this, SLOT(quadrat()));
 
     //Taste "sqrt"
     Taste_Sqrt = new QPushButton("Sqrt");
     Taste_Sqrt->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
-    connect(Taste_Sqrt, SIGNAL(clicked()), qApp, SLOT(quit()));
+    connect(Taste_Sqrt, SIGNAL(clicked()), this, SLOT(wurzel()));
 
 
 
@@ -158,8 +163,8 @@ MainWindow::MainWindow(QWidget *parent) :
     //Anzeige
 
     vbox->addWidget(ausgabefeld);
-    ausgabefeld->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Fixed);
-    ausgabefeld->setText("testi");
+   ausgabefeld->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Fixed);
+   ausgabefeld->setText("0");
 
 
     // erste Zeile hinter ausgabe
@@ -198,13 +203,155 @@ MainWindow::MainWindow(QWidget *parent) :
     window->setLayout(vbox);
 
 }
-void MainWindow::anzeige(void){
-    ausgabefeld->setText("ausgabestring");
+
+
+//berechnung
+void MainWindow::berechnung(void)
+{
+    for(int i =0;i< rechnung.length();i++)
+    {
+        if(rechnung.at(i)=="+")
+        {
+            for(int o=0; o<(i-o);o++)
+            {
+                zahl1 = zahl1 +rechnung.at(o);
+            }
+
+            for (int p=(i+1);p<rechnung.length();p++ )
+            {
+                zahl2=zahl2+rechnung.at(p);
+            }
+        }
+
+    }
+
+
+
+}
+
+
+
+void MainWindow::eins(void)
+{
+    rechnung = rechnung + "1";
+    ausgabefeld->setText(rechnung);
+}
+
+void MainWindow::zwei(void)
+{
+    rechnung = rechnung + "2";
+    ausgabefeld->setText(rechnung);
+}
+
+void MainWindow::drei(void)
+{
+    rechnung = rechnung + "3";
+    ausgabefeld->setText(rechnung);
+}
+
+void MainWindow::vier(void)
+{
+    rechnung = rechnung + "4";
+    ausgabefeld->setText(rechnung);
+}
+
+void MainWindow::fünf(void)
+{
+    rechnung = rechnung + "5";
+    ausgabefeld->setText(rechnung);
+}
+
+void MainWindow::sechs(void)
+{
+    rechnung = rechnung + "6";
+    ausgabefeld->setText(rechnung);
+}
+
+void MainWindow::sieben(void)
+{
+    rechnung = rechnung + "7";
+    ausgabefeld->setText(rechnung);
+}
+
+void MainWindow::acht(void)
+{
+    rechnung = rechnung + "8";
+    ausgabefeld->setText(rechnung);
+}
+
+void MainWindow::neun(void)
+{
+    rechnung = rechnung + "9";
+    ausgabefeld->setText(rechnung);
+}
+
+void MainWindow::null(void)
+{
+    rechnung = rechnung + "0";
+    ausgabefeld->setText(rechnung);
+}
+
+void MainWindow::plus(void)
+{
+    rechnung = rechnung + "+";
+    ausgabefeld->setText(rechnung);
+}
+
+void MainWindow::minus(void)
+{
+    rechnung = rechnung + "-";
+    ausgabefeld->setText(rechnung);
+}
+
+void MainWindow::mal(void)
+{
+    rechnung = rechnung + "*";
+    ausgabefeld->setText(rechnung);
+}
+
+void MainWindow::geteilt(void)
+{
+    rechnung = rechnung + "/";
+    ausgabefeld->setText(rechnung);
+}
+
+void MainWindow::quadrat(void)
+{
+    rechnung = rechnung + "^2";
+    ausgabefeld->setText(rechnung);
+}
+
+void MainWindow::wurzel(void)
+{
+    rechnung = rechnung + "sqrt";
+    ausgabefeld->setText(rechnung);
+}
+
+void MainWindow::komma(void)
+{
+    rechnung = rechnung + ",";
+    ausgabefeld->setText(rechnung);
+}
+
+void MainWindow::gleich(void)
+{
+    rechnung = rechnung + "=";
+    ausgabefeld->setText(rechnung);
+}
+
+void MainWindow::ans(void)
+{
+    rechnung = "Ans";
+    ausgabefeld->setText(rechnung);
+}
+
+void MainWindow::CE(void)
+{
+    rechnung.clear();
+    ausgabefeld->setText(rechnung);
 }
 MainWindow::~MainWindow()
 {
-
-
 
     delete ui;
 }
