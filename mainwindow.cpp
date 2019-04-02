@@ -12,8 +12,6 @@ QString rechnung="";
 QString zahl1="";
 QString zahl2 ="";
 double ergebnis;
-double erg1;
-double erg2;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -106,10 +104,10 @@ MainWindow::MainWindow(QWidget *parent) :
     Taste_geteilt->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     connect(Taste_geteilt, SIGNAL(clicked()), this, SLOT(geteilt()));
 
-    //Taste "Ans"
-    Taste_Ans = new QPushButton("Ans");
-    Taste_Ans->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
-    connect(Taste_Ans, SIGNAL(clicked()), this, SLOT(ans()));
+    //Taste "OFF"
+    Taste_OFF = new QPushButton("OFF");
+    Taste_OFF->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
+    connect(Taste_OFF, SIGNAL(clicked()), qApp, SLOT(quit()));
 
     //Taste "CE"
     Taste_CE = new QPushButton("CE");
@@ -150,7 +148,7 @@ MainWindow::MainWindow(QWidget *parent) :
     Taste8 -> setFont (t);
     Taste9 -> setFont (t);
     Taste_CE -> setFont (t);
-    Taste_Ans -> setFont (t);
+    Taste_OFF -> setFont (t);
     Taste_mal -> setFont (t);
     Taste_Sqrt -> setFont (t);
     Taste_plus -> setFont (t);
@@ -174,8 +172,8 @@ MainWindow::MainWindow(QWidget *parent) :
     // erste Zeile hinter ausgabe
     grid->addWidget(Taste_Sqrt,0,0);
     grid->addWidget(Taste_Quadrat,0,1);
-    grid->addWidget(Taste_Ans,0,2);
-    grid->addWidget(Taste_CE,0,3);
+    grid->addWidget(Taste_CE,0,2);
+    grid->addWidget(Taste_OFF,0,3);
 
     //Erste Tasterspalte
     grid -> addWidget(Taste7,1,0);
@@ -284,6 +282,18 @@ void MainWindow::berechnung(void)
             zahl1.clear();
             zahl2.clear();
 
+        }
+
+        else if(rechnung.at(i)=="^")
+        {
+            for(int o=0; o<(i);o++)
+            {
+                zahl1 = zahl1 +rechnung.at(o);
+            }
+            ergebnis = zahl1.toDouble()*zahl1.toDouble();
+            rechnung = QString::number(ergebnis);
+            zahl1.clear();
+            zahl2.clear();
         }
     }
 
@@ -400,11 +410,6 @@ void MainWindow::gleich(void)
     ausgabefeld->setText(rechnung);
 }
 
-void MainWindow::ans(void)
-{
-    rechnung = "Ans";
-    ausgabefeld->setText(rechnung);
-}
 
 void MainWindow::CE(void)
 {

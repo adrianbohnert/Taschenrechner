@@ -34,7 +34,7 @@ public:
     QPushButton *Taste8;
     QPushButton *Taste9;
     QPushButton *Taste_CE;
-    QPushButton *Taste_Ans;
+    QPushButton *Taste_OFF;
     QPushButton *Taste_mal;
     QPushButton *Taste_Sqrt;
     QPushButton *Taste_plus;
@@ -71,7 +71,6 @@ public slots:
     void wurzel(void);
     void komma(void);
     void gleich (void);
-    void ans(void);
     void CE(void);
 
 
