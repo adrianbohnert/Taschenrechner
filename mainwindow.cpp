@@ -3,13 +3,17 @@
 #include <QtWidgets>
 #include <QBoxLayout>
 #include <iostream>
+#include <QString>
+
+
 using namespace std;
 
 QString rechnung="";
 QString zahl1="";
 QString zahl2 ="";
-QString ergebnis="";
-
+double ergebnis;
+double erg1;
+double erg2;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -212,7 +216,7 @@ void MainWindow::berechnung(void)
     {
         if(rechnung.at(i)=="+")
         {
-            for(int o=0; o<(i-o);o++)
+            for(int o=0; o<(i);o++)
             {
                 zahl1 = zahl1 +rechnung.at(o);
             }
@@ -221,10 +225,65 @@ void MainWindow::berechnung(void)
             {
                 zahl2=zahl2+rechnung.at(p);
             }
+            ergebnis = zahl1.toDouble()+zahl2.toDouble();
+            rechnung = QString::number(ergebnis);
+            zahl1.clear();
+            zahl2.clear();
+
         }
 
-    }
+        if(rechnung.at(i)=="-")
+        {
+            for(int o=0; o<(i);o++)
+            {
+                zahl1 = zahl1 +rechnung.at(o);
+            }
 
+            for (int p=(i+1);p<rechnung.length();p++ )
+            {
+                zahl2=zahl2+rechnung.at(p);
+            }
+            ergebnis = zahl1.toDouble()-zahl2.toDouble();
+            rechnung = QString::number(ergebnis);
+            zahl1.clear();
+            zahl2.clear();
+
+        }
+
+        if(rechnung.at(i)=="*")
+        {
+            for(int o=0; o<(i);o++)
+            {
+                zahl1 = zahl1 +rechnung.at(o);
+            }
+
+            for (int p=(i+1);p<rechnung.length();p++ )
+            {
+                zahl2=zahl2+rechnung.at(p);
+            }
+            ergebnis = zahl1.toDouble()*zahl2.toDouble();
+            rechnung = QString::number(ergebnis);
+            zahl1.clear();
+            zahl2.clear();
+
+        }
+        if(rechnung.at(i)=="/")
+        {
+            for(int o=0; o<(i);o++)
+            {
+                zahl1 = zahl1 +rechnung.at(o);
+            }
+
+            for (int p=(i+1);p<rechnung.length();p++ )
+            {
+                zahl2=zahl2+rechnung.at(p);
+            }
+            ergebnis = zahl1.toDouble()/zahl2.toDouble();
+            rechnung = QString::number(ergebnis);
+            zahl1.clear();
+            zahl2.clear();
+        }
+    }
 
 
 }
@@ -335,7 +394,7 @@ void MainWindow::komma(void)
 
 void MainWindow::gleich(void)
 {
-    rechnung = rechnung + "=";
+    berechnung();
     ausgabefeld->setText(rechnung);
 }
 
