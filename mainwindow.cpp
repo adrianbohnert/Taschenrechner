@@ -77,7 +77,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(Taste0, SIGNAL(clicked()), this, SLOT(null()));
 
     //Taste ","
-    Taste_komma = new QPushButton(",");
+    Taste_komma = new QPushButton(".");
     Taste_komma->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     connect(Taste_komma, SIGNAL(clicked()), this, SLOT(komma()));
 
@@ -232,7 +232,7 @@ void MainWindow::berechnung(void)
 
         }
 
-        if(rechnung.at(i)=="-")
+        else if(rechnung.at(i)=="-")
         {
             for(int o=0; o<(i);o++)
             {
@@ -250,7 +250,7 @@ void MainWindow::berechnung(void)
 
         }
 
-        if(rechnung.at(i)=="*")
+       else if(rechnung.at(i)=="*")
         {
             for(int o=0; o<(i);o++)
             {
@@ -267,7 +267,8 @@ void MainWindow::berechnung(void)
             zahl2.clear();
 
         }
-        if(rechnung.at(i)=="/")
+
+        else if(rechnung.at(i)=="/")
         {
             for(int o=0; o<(i);o++)
             {
@@ -282,6 +283,7 @@ void MainWindow::berechnung(void)
             rechnung = QString::number(ergebnis);
             zahl1.clear();
             zahl2.clear();
+
         }
     }
 
@@ -388,7 +390,7 @@ void MainWindow::wurzel(void)
 
 void MainWindow::komma(void)
 {
-    rechnung = rechnung + ",";
+    rechnung = rechnung + ".";
     ausgabefeld->setText(rechnung);
 }
 
