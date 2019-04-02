@@ -133,7 +133,7 @@ MainWindow::MainWindow(QWidget *parent) :
     f=QFont( "Arial", 12, QFont::Bold); // Schriftgröße
     t=QFont( "Arial", 10, QFont::Bold); // Schriftgröße
 
-    ausgabefeld->setFont( f);
+    ausgabefeld->setFont(f);
 
     Taste0 -> setFont (t);
 
@@ -267,22 +267,32 @@ void MainWindow::berechnung(void)
         }
 
         else if(rechnung.at(i)=="/")
-        {
-            for(int o=0; o<(i);o++)
-            {
-                zahl1 = zahl1 +rechnung.at(o);
-            }
+                {
+                    for(int o=0; o<(i);o++)
+                    {
+                        zahl1 = zahl1 +rechnung.at(o);
+                    }
 
-            for (int p=(i+1);p<rechnung.length();p++ )
-            {
-                zahl2=zahl2+rechnung.at(p);
-            }
-            ergebnis = zahl1.toDouble()/zahl2.toDouble();
-            rechnung = QString::number(ergebnis);
-            zahl1.clear();
-            zahl2.clear();
+                    for (int p=(i+1);p<rechnung.length();p++ )
+                    {
+                        zahl2=zahl2+rechnung.at(p);
+                    }
+                    if (zahl2=="0")
+                    {
+                        rechnung = "ERROR";
+                        zahl1.clear();
+                        zahl2.clear();
+                    }
+                    else
+                    {
+                    ergebnis = zahl1.toDouble()/zahl2.toDouble();
+                    rechnung = QString::number(ergebnis);
+                    zahl1.clear();
+                    zahl2.clear();
+                    }
+                }
 
-        }
+
 
         else if(rechnung.at(i)=="^")
         {
@@ -295,6 +305,31 @@ void MainWindow::berechnung(void)
             zahl1.clear();
             zahl2.clear();
         }
+
+        else if(rechnung.at(i)=="t")
+                 {
+                    if (i == 3)
+                    {
+                     for(int o=i+1; o<rechnung.length();o++)
+                     {
+                         zahl1 = zahl1 +rechnung.at(o);
+                     }
+
+                     ergebnis = sqrt(zahl1.toDouble());
+                     rechnung = QString::number(ergebnis);
+                     zahl1.clear();
+                    }
+                    else
+                    {
+                        rechnung = "ERROR";
+                        zahl1.clear();
+                    }
+
+                   }
+
+
+
+
     }
 
 
