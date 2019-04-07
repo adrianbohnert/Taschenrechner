@@ -8,10 +8,7 @@
 
 using namespace std;
 
-QString rechnung="";
-QString zahl1="";
-QString zahl2 ="";
-double ergebnis;
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -47,7 +44,7 @@ MainWindow::MainWindow(QWidget *parent) :
     //Taste "5"
     Taste5 = new QPushButton("5");
     Taste5->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
-    connect(Taste5, SIGNAL(clicked()), this, SLOT(fünf()));
+    connect(Taste5, SIGNAL(clicked()), this, SLOT(fuenf()));
 
     //Taste "6"
     Taste6 = new QPushButton("6");
@@ -208,8 +205,18 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
 //berechnung
-void MainWindow::berechnung(void)
+void MainWindow::berechnung(char op)
 {
+    if(op=='2'){        //quadrat
+        ergebnis = rechnung.toDouble()*rechnung.toDouble();
+        rechnung = QString::number(ergebnis);
+    }
+    else if(op=='w'){   //wurzel
+        ergebnis=sqrt(rechnung.toDouble());
+        rechnung = QString::number(ergebnis);
+    }
+
+    else{               //rest mit richtigen operatoren
     for(int i =0;i< rechnung.length();i++)
     {
         if(rechnung.at(i)=="+")
@@ -291,45 +298,7 @@ void MainWindow::berechnung(void)
                     zahl2.clear();
                     }
                 }
-
-
-
-        else if(rechnung.at(i)=="^")
-        {
-            for(int o=0; o<(i);o++)
-            {
-                zahl1 = zahl1 +rechnung.at(o);
-            }
-            ergebnis = zahl1.toDouble()*zahl1.toDouble();
-            rechnung = QString::number(ergebnis);
-            zahl1.clear();
-            zahl2.clear();
-        }
-
-        else if(rechnung.at(i)=="t")
-                 {
-                    if (i == 3)
-                    {
-                     for(int o=i+1; o<rechnung.length();o++)
-                     {
-                         zahl1 = zahl1 +rechnung.at(o);
-                     }
-
-                     ergebnis = sqrt(zahl1.toDouble());
-                     rechnung = QString::number(ergebnis);
-                     zahl1.clear();
-                    }
-                    else
-                    {
-                        rechnung = "ERROR";
-                        zahl1.clear();
-                    }
-
-                   }
-
-
-
-
+    }
     }
 
 
@@ -361,7 +330,7 @@ void MainWindow::vier(void)
     ausgabefeld->setText(rechnung);
 }
 
-void MainWindow::fünf(void)
+void MainWindow::fuenf(void)
 {
     rechnung = rechnung + "5";
     ausgabefeld->setText(rechnung);
@@ -399,49 +368,75 @@ void MainWindow::null(void)
 
 void MainWindow::plus(void)
 {
-    rechnung = rechnung + "+";
+    if(!hatEinenOperator){
+        rechnung = rechnung + "+";
+        hatEinenOperator=true;
+        hatKomma = false;
+    }
     ausgabefeld->setText(rechnung);
 }
 
 void MainWindow::minus(void)
 {
-    rechnung = rechnung + "-";
+    if(!hatEinenOperator){
+        rechnung = rechnung + "-";
+        hatEinenOperator=true;
+        hatKomma = false;
+    }
     ausgabefeld->setText(rechnung);
 }
 
 void MainWindow::mal(void)
 {
-    rechnung = rechnung + "*";
+    if(!hatEinenOperator){
+        rechnung = rechnung + "*";
+        hatEinenOperator=true;
+        hatKomma = false;
+    }
     ausgabefeld->setText(rechnung);
 }
 
 void MainWindow::geteilt(void)
 {
-    rechnung = rechnung + "/";
+    if(!hatEinenOperator){
+        rechnung = rechnung + "/";
+        hatEinenOperator=true;
+        hatKomma = false;
+    }
     ausgabefeld->setText(rechnung);
 }
 
 void MainWindow::quadrat(void)
 {
-    rechnung = rechnung + "^2";
+    if(!hatEinenOperator){
+        berechnung('2');
+        hatKomma = false;
+    }
     ausgabefeld->setText(rechnung);
 }
 
 void MainWindow::wurzel(void)
 {
-    rechnung = rechnung + "sqrt";
+    if(!hatEinenOperator){
+        berechnung('w');
+        hatKomma = false;
+    }
     ausgabefeld->setText(rechnung);
 }
 
 void MainWindow::komma(void)
 {
+    if(!hatKomma){
     rechnung = rechnung + ".";
+    hatKomma=true;
+    }
     ausgabefeld->setText(rechnung);
 }
 
 void MainWindow::gleich(void)
 {
     berechnung();
+    hatEinenOperator=false;
     ausgabefeld->setText(rechnung);
 }
 
@@ -449,6 +444,7 @@ void MainWindow::gleich(void)
 void MainWindow::CE(void)
 {
     rechnung.clear();
+    hatEinenOperator=false;
     ausgabefeld->setText(rechnung);
 }
 MainWindow::~MainWindow()

@@ -50,14 +50,22 @@ public:
     QFont f;
     QFont t;
 
+    QString rechnung="";
+    QString zahl1="";
+    QString zahl2 ="";
+    bool hatEinenOperator=false;
+    bool hatKomma = false;
+    bool minusOK = false;
+    double ergebnis;
+    void berechnung(char op='0');
+
 public slots:
-    //void anzeige(void);
-    void berechnung(void);
+
     void eins(void);
     void zwei(void);
     void drei(void);
     void vier(void);
-    void fünf(void);
+    void fuenf(void);
     void sechs(void);
     void sieben(void);
     void acht(void);
