@@ -217,10 +217,12 @@ void MainWindow::berechnung(char op)
     }
 
     else{               //rest mit richtigen operatoren
-    for(int i =0;i< rechnung.length();i++)
+    for(int i =1;i< rechnung.length();i++)
     {
         if(rechnung.at(i)=="+")
         {
+           //if (rechnung.at(0)=="-")
+           //{
             for(int o=0; o<(i);o++)
             {
                 zahl1 = zahl1 +rechnung.at(o);
@@ -234,7 +236,7 @@ void MainWindow::berechnung(char op)
             rechnung = QString::number(ergebnis);
             zahl1.clear();
             zahl2.clear();
-
+          // }
         }
 
         else if(rechnung.at(i)=="-")
@@ -310,60 +312,70 @@ void MainWindow::eins(void)
 {
     rechnung = rechnung + "1";
     ausgabefeld->setText(rechnung);
+    minusOK=false;
 }
 
 void MainWindow::zwei(void)
 {
     rechnung = rechnung + "2";
     ausgabefeld->setText(rechnung);
+    minusOK=false;
 }
 
 void MainWindow::drei(void)
 {
     rechnung = rechnung + "3";
     ausgabefeld->setText(rechnung);
+    minusOK=false;
 }
 
 void MainWindow::vier(void)
 {
     rechnung = rechnung + "4";
     ausgabefeld->setText(rechnung);
+    minusOK=false;
 }
 
 void MainWindow::fuenf(void)
 {
     rechnung = rechnung + "5";
     ausgabefeld->setText(rechnung);
+    minusOK=false;
 }
 
 void MainWindow::sechs(void)
 {
     rechnung = rechnung + "6";
     ausgabefeld->setText(rechnung);
+    minusOK=false;
 }
 
 void MainWindow::sieben(void)
 {
     rechnung = rechnung + "7";
     ausgabefeld->setText(rechnung);
+    minusOK=false;
 }
 
 void MainWindow::acht(void)
 {
     rechnung = rechnung + "8";
     ausgabefeld->setText(rechnung);
+    minusOK=false;
 }
 
 void MainWindow::neun(void)
 {
     rechnung = rechnung + "9";
     ausgabefeld->setText(rechnung);
+    minusOK=false;
 }
 
 void MainWindow::null(void)
 {
     rechnung = rechnung + "0";
     ausgabefeld->setText(rechnung);
+    minusOK=false;
 }
 
 void MainWindow::plus(void)
@@ -372,17 +384,19 @@ void MainWindow::plus(void)
         rechnung = rechnung + "+";
         hatEinenOperator=true;
         hatKomma = false;
+        minusOK = true;
     }
     ausgabefeld->setText(rechnung);
 }
 
 void MainWindow::minus(void)
 {
-    if(!hatEinenOperator){
+
         rechnung = rechnung + "-";
-        hatEinenOperator=true;
+
         hatKomma = false;
-    }
+        minusOK = true;
+
     ausgabefeld->setText(rechnung);
 }
 
@@ -392,6 +406,7 @@ void MainWindow::mal(void)
         rechnung = rechnung + "*";
         hatEinenOperator=true;
         hatKomma = false;
+        minusOK = true;
     }
     ausgabefeld->setText(rechnung);
 }
@@ -402,6 +417,7 @@ void MainWindow::geteilt(void)
         rechnung = rechnung + "/";
         hatEinenOperator=true;
         hatKomma = false;
+        minusOK=true;
     }
     ausgabefeld->setText(rechnung);
 }
@@ -445,6 +461,8 @@ void MainWindow::CE(void)
 {
     rechnung.clear();
     hatEinenOperator=false;
+    minusOK = true;
+    hatKomma=false;
     ausgabefeld->setText(rechnung);
 }
 MainWindow::~MainWindow()

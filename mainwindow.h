@@ -55,7 +55,7 @@ public:
     QString zahl2 ="";
     bool hatEinenOperator=false;
     bool hatKomma = false;
-    bool minusOK = false;
+    bool minusOK = true;
     double ergebnis;
     void berechnung(char op='0');
 
